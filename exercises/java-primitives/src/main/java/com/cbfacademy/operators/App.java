@@ -6,7 +6,8 @@ public class App {
     }
 
     public static double add(double operand1, double operand2) {
-        throw new RuntimeException("Not implemented");
+       // throw new RuntimeException("Not implemented");
+       return  operand1 + operand2;
     }
 
     public static double subtract(double operand1, double operand2) {
