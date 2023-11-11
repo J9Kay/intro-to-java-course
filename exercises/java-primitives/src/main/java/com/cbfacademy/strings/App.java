@@ -21,6 +21,6 @@ public class App {
         // TODO: Write code to return a string formatted as follows: "Item: [item]. Price: £[amount]. Quantity: [quantity]". The date should be formatted as DD/MM/YYYY, e.g. 24/10/2023
         //throw new RuntimeException("Not implemented");
         return "Item: " + item + ". Price: £" + String.format("%.2f", price) + ". Quantity: " + quantity ;
-}
     }
+}
 
