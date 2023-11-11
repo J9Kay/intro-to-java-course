@@ -49,6 +49,7 @@ When it's time to choose an employee for the free toy, generate a random index w
 Best Suited Interface: Set
 Reasoning and Implementation:
 A Set is ideal for storing unique first names, as it automatically handles duplicates.
+
 Use a HashSet to store the names. When a new product is to be named, remove a name from the Set to ensure it's used only once.
 
 3. WTI decides that it only wants to use the most popular names for its toys. Count up the number of employees who have each first name.
@@ -56,6 +57,7 @@ Use a HashSet to store the names. When a new product is to be named, remove a na
 Best Suited Interface: Map
 Reasoning and Implementation:
 A Map is perfect for counting occurrences. Use a Map<String, Integer> where the key is the first name, and the value is the count.
+
 Iterate through the list of employee names, and for each name, increment its count in the map. This way, you'll end up with a count of how many employees have each first name.
 
 4. WTI acquires season tickets for the local lacrosse team, to be shared by employees. Create a waiting list for this popular sport.
@@ -63,6 +65,7 @@ Iterate through the list of employee names, and for each name, increment its cou
 Best Suited Interface: Queue
 Reasoning and Implementation:
 A Queue is designed for situations where you need to process elements in a specific order. In this case, the order is the waiting list for tickets.
+
 Use a LinkedList as your Queue implementation. Employees who want to attend a game are enqueued (added to the end of the queue), and employees are dequeued (removed from the front of the queue) as tickets become available.
 
 
