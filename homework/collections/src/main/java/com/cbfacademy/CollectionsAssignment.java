@@ -2,7 +2,14 @@ package com.cbfacademy;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectionsAssignment {
 
@@ -17,6 +24,15 @@ public class CollectionsAssignment {
     public static void removeSmallInts(List<Integer> list, int minValue) {
         // Your solution must traverse the list from last to first element
         // removing any values less than minValue.
+        ListIterator<Integer> iterator = list.listIterator(list.size());
+
+        while (iterator.hasPrevious()) {
+            int currentElement = iterator.previous();
+            if (currentElement< minValue)
+                iterator.remove();
+        }
+
+
     }
 
     /**
@@ -27,8 +43,8 @@ public class CollectionsAssignment {
      * @return true if integers contains duplicates, false otherwise
      */
     public static boolean containsDuplicates(Collection<Integer> integers) {
-        // Your solution must not use any loops.
-        return false;
+        Set<Integer> seen = new HashSet<>();
+        return integers.stream().anyMatch(element -> !seen.add(element)); 
     }
 
     /**
@@ -48,7 +64,10 @@ public class CollectionsAssignment {
      */
     public static ArrayList<Integer> inEither(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<Integer>();
+        return Stream.concat(ints1.stream(), ints2.stream())
+                     .distinct()
+                     .sorted()
+                     .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**
@@ -66,7 +85,15 @@ public class CollectionsAssignment {
      */
     public static ArrayList<Integer> inBoth(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<>();
+        Set<Integer> set1 = new HashSet<>(ints1);
+
+        return ints2.stream()
+                    .filter(set1::contains)
+                    .collect(Collectors.toSet()) // Remove duplicates
+                    .stream()
+                    .sorted()
+                    .collect(Collectors.toCollection(ArrayList::new));
+       
     }
 
     /**
@@ -85,7 +112,18 @@ public class CollectionsAssignment {
         // your counts to find the largest. You'll need a collection that allows
         // you to store a mapping from Strings to counts.
         // No nested loops or non-enhanced for-loops are allowed.
-        return "";
+        if (list.isEmpty()) {
+            return "";
+        }
+
+        Map<String, Long> counts = list.stream()
+            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        return counts.entrySet().stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse("");
+   
     }
 
     public static String getName() {

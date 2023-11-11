@@ -39,7 +39,7 @@ public class CollectionsAssignmentTest {
         final boolean result = CollectionsAssignment.containsDuplicates(numbers);
         assertThat(result, is(true));
 
-        numbers.remove(12);
+        numbers.remove(Integer.valueOf(12)); // Updated error in test code that was asking to remove index of 12 but this array is only a size of 10 
         final boolean anotherResult = CollectionsAssignment.containsDuplicates(numbers);
         assertThat(anotherResult, is(false));
     }
