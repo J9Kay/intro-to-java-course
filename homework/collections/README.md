@@ -69,7 +69,7 @@ A Queue is designed for situations where you need to process elements in a speci
 Use a LinkedList as your Queue implementation. Employees who want to attend a game are enqueued (added to the end of the queue), and employees are dequeued (removed from the front of the queue) as tickets become available.
 
 
-[1]: https://docs.oracle.com/javase/11/docs/api/index.html
+[1]: https://docs.oracle.com/javase/17/docs/api/index.html
 [2]: https://docs.oracle.com/javase/tutorial/collections/intro/index.html
 [3]: https://github.com/cbfacademy/intro-to-java-course/blob/main/homework/collections/src/main/java/com/cbfacademy/CollectionsAssignment.java
 [4]: https://junit.org/junit5/
