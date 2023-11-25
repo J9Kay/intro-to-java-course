@@ -82,7 +82,6 @@
                     <version>3.11.0</version>
                     <configuration>
                         <testExcludes>
-                            <exclude>**/shapes/*.java</exclude>
                         </testExcludes>
                     </configuration>
                 </plugin>
