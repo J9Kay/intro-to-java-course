@@ -14,7 +14,7 @@ For the exercises below, we've provided the starter project above.
 
 ### Question 1
 
-Is the following code legal?
+Is the following code legal? yes, a try block may exist without a  catch block if it is accompanied by a finally block.
 
 ```java
 try {
@@ -26,18 +26,18 @@ try {
 
 ### Question 2
 
-What exception types can be caught by the following handler?
+What exception types can be caught by the following handler? All exceptions
 ```java
 catch (Exception e) {
     
 }
 ```
 
-What is wrong with using this type of exception handler?
+What is wrong with using this type of exception handler? Exception is a superclass of all exceptions , so the catch blook is derived from this class. Its bad practice because it can catch excepptions i may not want to handle, potentially hiding bugs or leading to unexpected behaviour.
 
 ### Question 3
 
-Is there anything wrong with the following exception handler as written? Will this code compile?
+Is there anything wrong with the following exception handler as written? Will this code compile? Yes, there is something wrong and this code will not compile. The try must be ordered from the most specificto general. The catch block for arithmetic must come before the general.
 
 ```java
 try {
@@ -61,7 +61,7 @@ The above code produces (choose 1):
 - [ ] an error
 - [ ] a checked exception
 - [ ] an unchecked exception
-- [ ] a compile error
+- [x ] a compile error  - the array needs to be initialised before it can ve used.
 - [ ] no exception
 
 ### Question 5
@@ -69,9 +69,9 @@ The above code produces (choose 1):
 The JVM starts running your program, but the JVM can't find the Java platform classes. 
 (The Java platform classes reside in classes.zip or rt.jar.)
 
-What happens (choose 1):
+What happens (choose 1): 
 
-- [ ] an error
+- [ x] an error  - An ERROR will occur. This situation typically results in a NoClassDefFoundError or ClassNotFoundException, which are not exceptions but errors, indicating a problem with the Java environment or classpath, not with the program's code itself.
 - [ ] a checked exception
 - [ ] an unchecked exception
 - [ ] a compile error
