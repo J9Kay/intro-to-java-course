@@ -24,30 +24,26 @@ public class FileManager {
     }
 
     public void reverseLines(String inputFile, String outputFile) throws IOException {
-        List<String> lines = new ArrayList<>();
+    List<String> lines = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Detect line ending and append it to the line
-                long position = reader.skip(2);
-                String lineEnding = position == 2 ? "\r\n" : "\n";
-                reader.reset();  // Reset reader to the original position
-
-                lines.add(line + lineEnding);
-            }
+    try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            lines.add(line);
         }
+    }
 
-        Collections.reverse(lines);
+    Collections.reverse(lines);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-            for (int i = 0; i < lines.size(); i++) {
-                writer.write(lines.get(i));
-                // Do not add an extra line ending after the last line
-                if (i < lines.size() - 1) {
-                    writer.newLine();
-                }
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+        String lineSeparator = System.lineSeparator();
+        for (int i = 0; i < lines.size(); i++) {
+            writer.write(lines.get(i));
+            // Add a line separator except for the last line
+            if (i < lines.size() - 1) {
+                writer.write(lineSeparator);
             }
         }
     }
+}
 }
